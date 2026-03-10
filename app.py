@@ -18,13 +18,14 @@ class Academia():
         self.porta_halteres[key_halter] = 0
         return peso
     
-    def devolver_halter():
-        pass
+    def devolver_halter(self,position,halter):
+        self.porta_halteres[position] = halter
+        return halter
 
-    def calcular_caos():
-        pass
+    def calcular_caos(self):
+        out_position_list = [i for i, j in self.porta_halteres.items() if i != j]
+        return len(out_position_list) / len(self.porta_halteres)
 
 
 self = Academia()
-print(self.pegar_halter(22))
-print(self.porta_halteres)
+
