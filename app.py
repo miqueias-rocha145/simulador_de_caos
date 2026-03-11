@@ -1,13 +1,17 @@
 import random
+import seaborn as sns
 
 class Academia():
     def __init__(self):
-        self.halteres = [i for i in range(10,36) if i % 2 == 0]
+        self.halteres = [i for i in range(10,60) if i % 2 == 0]
         self.porta_halteres = {}
         self.reiniciar_dia()
 
     def reiniciar_dia(self):
         self.porta_halteres = {i:i for i in self.halteres}
+
+    def listar_espacos(self):
+        return [i for i,j in self.porta_halteres.items() if j == 0]
 
     def listar_halteres(self):
         return [i for i in self.porta_halteres.values() if i != 0]
@@ -28,15 +32,31 @@ class Academia():
 
 class Usuario:
     def __init__(self, tipo_usuario, academia):
-        self.tipo = tipo_usuario # 1 - Normal | 2 - Bagunceiro
+        self.tipo_usuario = tipo_usuario # 1 - Normal | 2 - Bagunceiro
         self.academia = academia
         self.peso = 0
 
     def iniciar_treino(self):
         lista_pesos = self.academia.listar_halteres()
-        halter_choose = random.choice(lista_pesos)
-        picked_halter = self.academia.pegar_halter(halter_choose)
+        self.peso = random.choice(lista_pesos)
+        picked_halter = self.academia.pegar_halter(self.peso)
         return picked_halter
+    
+    def finalizar_treino(self):
+        espacos_vazios = self.academia.listar_espacos()
 
-self = Academia()
+        if self.tipo_usuario == 1:
+            if self.peso in espacos_vazios:
+                self.academia.devolver_halter(self.peso,self.peso)
+            else:
+                escolha_aleatoria = random.choice(espacos_vazios)
+                self.academia.devolver_halter(escolha_aleatoria,self.peso)
+
+        elif self.tipo_usuario == 2:
+            escolha_aleatoria = random.choice(espacos_vazios)
+            self.academia.devolver_halter(escolha_aleatoria,self.peso)
+
+        self.peso = 0
+        return
+
 
