@@ -59,4 +59,23 @@ class Usuario:
         self.peso = 0
         return
 
+Academia_Arraiana = Academia()
 
+Usuarios = [Usuario(1,Academia_Arraiana) for i in range(20)]
+Usuarios.extend([Usuario(2,Academia_Arraiana) for i in range(1)])
+
+random.shuffle(Usuarios)
+list_chaos = []
+
+for k in range(50):
+    Academia_Arraiana.reiniciar_dia()
+    for _ in range(10):
+        random.shuffle(Usuarios)
+        for user in Usuarios:
+            user.iniciar_treino()
+        for user in Usuarios:
+            user.finalizar_treino()
+
+    list_chaos.append(Academia_Arraiana.calcular_caos())
+
+sns.displot(list_chaos)
