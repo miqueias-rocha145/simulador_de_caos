@@ -67,7 +67,7 @@ Usuarios.extend([Usuario(2,Academia_Arraiana) for i in range(1)])
 random.shuffle(Usuarios)
 list_chaos = []
 
-for k in range(50):
+for _ in range(1000):
     Academia_Arraiana.reiniciar_dia()
     for _ in range(10):
         random.shuffle(Usuarios)
