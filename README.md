@@ -74,4 +74,5 @@ pip install -r requirements.txt
 ## 👨‍💻 Autor
 
 Desenvolvido por **Miquéias Rocha** 🚀
-Porjeto faz parte do aprendizado em Python na Asimov Academy
+
+Projeto faz parte do aprendizado em Python na Asimov Academy
